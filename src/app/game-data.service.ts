@@ -13,14 +13,14 @@ const URL = 'ws://soccero-locker.playroom.leanforge.pl/games';
 })
 
 export class GameDataService {
-  public games: Subject<Game>
+  public games: Subject<Game>;
 
   constructor(private wsService: WebsocketService) {
     this.games = <Subject<Game>>wsService.connect(URL)
       .pipe(
         map((response: MessageEvent): Game => {
+          console.log('GameDataService', JSON.parse(response.data));
           const data = JSON.parse(response.data);
-          console.log(data);
           return data;
         })
       );

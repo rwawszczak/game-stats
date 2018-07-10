@@ -1,33 +1,37 @@
 <div class='container'>
   <div class='column leftColumn ongoing {{ongoing ? ongoing.gameType : ""}}'>
     <div *ngIf="ongoing">
-      <h2>Ongoing game:</h2>
+      <h1>Ongoing game:</h1>
       <div class='logo {{ongoing.gameType}}Logo'></div>
       <div class='ongoingGame'>
-        <h3>{{gameNames[ongoing.gameType]}}</h3>
+        <h2>{{gameNames[ongoing.gameType]}}</h2>
       </div>
     </div>
-    <h2 *ngIf="!ongoing">There are no ongoing games.</h2>
+    <div>
+      <h1 *ngIf="!ongoing">There are no ongoing games.</h1>
+    </div>
   </div>
   <div class='column leftColumn previous {{previous ? previous.gameType : ""}}'>
     <div *ngIf="previous">
-      <h2>Previous game:</h2>
+      <h1>Previous game:</h1>
       <div class='logo {{previous.gameType}}Logo'></div>
       <div class='previousGame'>
-        <h3>{{gameNames[previous.gameType]}}</h3>
+        <h2>{{gameNames[previous.gameType]}}</h2>
       </div>
     </div>
-    <h2 *ngIf="!previous">There are no previous games.</h2>
+    <div>
+      <h1 *ngIf="!previous">There are no previous games.</h1>
+    </div>
   </div>
   <div class='column rightColumn queue'>
-    <h2>Queued games:</h2>
+    <h1>Queued games:</h1>
     <div *ngIf="games.size">
       <li *ngFor="let game of getGames()">
         <span>{{gameNames[game.gameType]}}</span>
       </li>
     </div>
     <div *ngIf="!games.size">
-      Game queue is empty
+      <h3>Game queue is empty</h3>
     </div>
   </div>
 </div>

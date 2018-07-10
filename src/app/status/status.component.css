@@ -1,21 +1,4 @@
-body {
-  line-height: 1.6;
-  font-size: 18px;
-  color: #444;
-  padding: 0 10px;
-  font-family: Century Gothic, sans-serif;
-}
 
-a {
-  text-decoration: none;
-  color: #444;
-}
-
-h1, h2, h3 {
-  margin: 0px;
-  padding: 10px;
-  line-height: 1.2;
-}
 
 .container {
   display: block;
@@ -40,13 +23,14 @@ h1, h2, h3 {
 }
 
 .column * {
-  padding: 30px 0 0 40px;
+  padding: 20px 0 0 30px;
 }
 
 .leftColumn {
   width: 69%;
-  left: 0%;
+  left: 0;
   margin-left: 10px;
+  box-shadow: 0 5px 10px #fff, 3px -1px 7px #ccc;
 }
 
 .rightColumn {
@@ -54,6 +38,7 @@ h1, h2, h3 {
   right: 0;
   height: 80%;
   margin-right: 10px;
+  box-shadow: 3px -1px 7px #ccc;
 }
 
 .topBar {
@@ -72,7 +57,7 @@ h1, h2, h3 {
 
 .previous {
   background: linear-gradient(to bottom, #ddd 0%, #fff 90%);
-  bottom: 0%;
+  bottom: 0;
   height: 30%;
   border-radius: 50px 50px 0 0;
 }
@@ -85,7 +70,7 @@ h1, h2, h3 {
 }
 
 .ongoingGame {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1000ms;
 }
 
@@ -100,7 +85,7 @@ h1, h2, h3 {
 
 .rocket_league {
   background: url(../../assets/img/rl.jpg),
-  linear-gradient(to bottom, #999 0%, #fff 90%);
+  linear-gradient(to bottom, #777 0%, #fff 90%);
   background-blend-mode: screen;
   background-size: cover;
   transition: background 1000ms;
@@ -108,14 +93,14 @@ h1, h2, h3 {
 
 .fifa_pl {
   background: url(../../assets/img/fifa.jpg),
-  linear-gradient(to bottom, #999 0%, #fff 90%);
+  linear-gradient(to bottom, #777 0%, #fff 90%);
   background-blend-mode: screen;
   background-size: cover;
 }
 
 .miseczka_e {
   background: url(../../assets/img/doa.jpg),
-  linear-gradient(to bottom, #999 0%, #fff 90%);
+  linear-gradient(to bottom, #777 0%, #fff 90%);
   background-blend-mode: screen;
   background-size: cover;
   transition: background 1000ms;
@@ -123,32 +108,32 @@ h1, h2, h3 {
 
 .obliteracers {
   background: url(../../assets/img/oblite.jpg),
-  linear-gradient(to bottom, #999 0%, #fff 90%);
+  linear-gradient(to bottom, #777 0%, #fff 90%);
   background-blend-mode: screen;
   background-size: cover;
   transition: background 1000ms;
 }
 
 .rocket_leagueLogo {
-  background-size: contain;
   background: url(../../assets/img/rl-logo.png) no-repeat;
+  background-size: contain;
   transition: background 1000ms;
 }
 
 .fifa_plLogo {
-  background-size: contain;
   background: url(../../assets/img/fifa-logo.png) no-repeat;
+  background-size: contain;
   transition: background 1000ms;
 }
 
 .miseczka_eLogo {
-  background-size: contain;
   background: url(../../assets/img/doa-logo.png) no-repeat;
+  background-size: contain;
   transition: background 1000ms;
 }
 
 .obliteracersLogo {
-  background-size: contain;
   background: url(../../assets/img/oblite-logo.png) no-repeat;
+  background-size: contain;
   transition: background 1000ms;
 }

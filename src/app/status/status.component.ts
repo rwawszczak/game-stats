@@ -21,22 +21,21 @@ export class StatusComponent implements OnInit {
 
   constructor(private gameDataService: GameDataService) {
     gameDataService.games.subscribe(game => {
+      console.log('StatusComponent', game);
       switch (game.eventType) {
         case 'GAME_ADDED':
-          // this.games[game.gameId] = game;
           this.games.set(game.gameId, game);
           console.log('event: ', 'GAME_ADDED ' + this.games.size);
           break;
         case 'GAME_STARTED':
           this.ongoing = game;
-          // delete this.games[game.gameId];
-          this.games.delete(game.gameId)
+          this.games.delete(game.gameId);
           this.inProgress = true;
           console.log('event: ', 'GAME_STARTED');
           break;
         case 'GAME_FINISHED':
           this.previous = game;
-          if (this.ongoing.gameId === game.gameId) {
+          if (this.ongoing && (this.ongoing.gameId === game.gameId)) {
             this.ongoing = null;
             this.inProgress = false;
           }
@@ -45,7 +44,9 @@ export class StatusComponent implements OnInit {
         default:
           console.log('default: ', game);
       }
-    });
+    },
+      e => console.log('Error', e),
+      () => console.log('Connection closed.'));
   }
 
   getGames()  {
