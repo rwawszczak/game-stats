@@ -27,15 +27,18 @@ export class WebsocketService {
       console.log('WebsocketService', JSON.parse(event.data));
       subject.next(event);
     });
-    ws.addEventListener('close', function(event) {
+    ws.addEventListener('close', function() {
       ws.reconnect(1, 'Keep alive.');
     });
-    ws.addEventListener('open', function(event) {
+    ws.addEventListener('open', function() {
       console.log('Connection opened/reopened.');
+      console.log('Asking for state...');
+      ws.send(JSON.stringify({'commandName': 'GET_STATE'}));
     });
     ws.addEventListener('error', function(event) {
       console.log('Error', event);
     });
+
 
     return subject;
   }

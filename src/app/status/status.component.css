@@ -83,6 +83,22 @@
   display: inline;
 }
 
+.countdown {
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  font-size: 6.5em;
+  font-weight: bold;
+  font-family: Lucida Console, monospace;
+  text-align: center;
+  color: #e00;
+  text-shadow: -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black, 0 0 10px black;
+}
+
+.players{
+  text-shadow: 0 0 10px white;
+}
+
 .rocket_league {
   background: url(../../assets/img/rl.jpg),
   linear-gradient(to bottom, #777 0%, #fff 90%);

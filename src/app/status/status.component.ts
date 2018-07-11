@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {GameDataService} from '../game-data.service';
 import {Game} from '../game';
+import {interval, Observable} from 'rxjs/index';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-status',
@@ -10,6 +12,7 @@ import {Game} from '../game';
 export class StatusComponent implements OnInit {
   games: Map<string, Game> = new Map();
   ongoing: Game;
+  countdown: string;
   previous: Game;
   inProgress: boolean;
   gameNames: Object = {
@@ -18,6 +21,7 @@ export class StatusComponent implements OnInit {
     miseczka_e: 'Dead or Alive 5: Last Round',
     obliteracers: 'Obliteracers'
   };
+  private counter$: Observable<number>;
 
   constructor(private gameDataService: GameDataService) {
     gameDataService.games.subscribe(game => {
@@ -31,6 +35,7 @@ export class StatusComponent implements OnInit {
           this.ongoing = game;
           this.games.delete(game.gameId);
           this.inProgress = true;
+          this.startTimer();
           console.log('event: ', 'GAME_STARTED');
           break;
         case 'GAME_FINISHED':
@@ -47,6 +52,17 @@ export class StatusComponent implements OnInit {
     },
       e => console.log('Error', e),
       () => console.log('Connection closed.'));
+  }
+
+  startTimer() {
+    this.counter$ = interval(1000).pipe(
+      map(() => {
+        return Math.floor((new Date(this.ongoing.startDate).getTime() + (30 * 60000) - new Date().getTime()) / 1000);
+      })
+    );
+    this.counter$.subscribe((x) => {
+      this.countdown = ('0' + Math.floor(x / 60)).slice(-2) + ':' + ('0' + x % 60).slice(-2);
+    });
   }
 
   getGames()  {
