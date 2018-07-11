@@ -61,6 +61,7 @@ export class StatusComponent implements OnInit {
       })
     );
     this.counter$.subscribe((x) => {
+      x = x < 0 ? 0 : x;
       this.countdown = ('0' + Math.floor(x / 60)).slice(-2) + ':' + ('0' + x % 60).slice(-2);
     });
   }
