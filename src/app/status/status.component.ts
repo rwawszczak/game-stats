@@ -57,7 +57,7 @@ export class StatusComponent implements OnInit {
   startTimer() {
     this.counter$ = interval(1000).pipe(
       map(() => {
-        return Math.floor((new Date(this.ongoing.startDate).getTime() + (30 * 60000) - new Date().getTime()) / 1000);
+        return this.ongoing ? Math.floor((new Date(this.ongoing.startDate).getTime() + (30 * 60000) - new Date().getTime()) / 1000) : 0;
       })
     );
     this.counter$.subscribe((x) => {
@@ -70,6 +70,9 @@ export class StatusComponent implements OnInit {
     return Array.from(this.games.values());
   }
 
+  getETA(game)  {
+    return this.ongoing ? new Date(this.ongoing.startDate).getTime() + (this.games.size * 30 * 60000) : new Date();
+  }
   ngOnInit() {
 
   }

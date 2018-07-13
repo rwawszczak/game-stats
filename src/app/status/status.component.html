@@ -6,7 +6,7 @@
       <div class='ongoingGame'>
         <h2>{{gameNames[ongoing.gameType]}}</h2>
         <span>Started at {{ ongoing.startDate | date: 'HH:mm' }}</span>
-        <p><span class="players">Players:<br/><i *ngFor="let p of ongoing.players">{{p}}</i></span></p>
+        <p class="players">Players:<span><br/><i *ngFor="let p of ongoing.players">{{p}}</i></span></p>
         <div class="countdown">{{countdown}}</div>
       </div>
     </div>
@@ -21,7 +21,7 @@
       <div class='previousGame'>
         <h2>{{gameNames[previous.gameType]}}</h2>
         <span>Ended at {{ previous.endDate| date: 'HH:mm' }}</span>
-        <p><span>Players:<br/><i *ngFor="let p of previous.players">{{p}}</i></span></p>
+        <p class="players">Players:<span><br/><i *ngFor="let p of previous.players">{{p}}</i></span></p>
       </div>
     </div>
     <div>
@@ -32,8 +32,9 @@
     <h1>Queued games:</h1>
     <div *ngIf="games.size">
       <li *ngFor="let game of getGames()">
-        <span>{{gameNames[game.gameType]}} ({{ game.creationDate | date: 'HH:mm' }}) </span>
+        <span>{{gameNames[game.gameType]}} (ETA: {{ getETA(game) | date: 'HH:mm' }}) </span>
       </li>
+      <p align="center"><i>/*ETA is bugged.*/</i></p>
     </div>
     <div *ngIf="!games.size">
       <h3>Game queue is empty</h3>
