@@ -6,7 +6,7 @@
       <div class='ongoingGame'>
         <h2>{{gameNames[ongoing.gameType]}}</h2>
         <span>Started at {{ ongoing.startDate | date: 'HH:mm' }}</span>
-        <p class="players">Players:<span><br/><i *ngFor="let p of ongoing.players">{{p}}</i></span></p>
+        <p class="players">Players:<span *ngFor="let p of ongoing.players"><br/><i>{{p}}</i></span></p>
         <div class="countdown">{{countdown}}</div>
       </div>
     </div>

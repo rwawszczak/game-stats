@@ -7,13 +7,10 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'Game Status';
-  private fullScreen = false;
 
   goFullScreen() {
-    this.fullScreen = !this.fullScreen;
-    if (this.fullScreen) {
-      document.documentElement.webkitRequestFullScreen();
-    }
+    document.documentElement.webkitRequestFullScreen();
   }
+
 
 }
