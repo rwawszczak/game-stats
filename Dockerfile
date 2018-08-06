@@ -1,10 +1,3 @@
-FROM node:8.11
+FROM nginx
 
-WORKDIR /app
-COPY . /app/
-
-RUN npm install
-RUN npm install -g @angular/cli
-
-EXPOSE 4200
-CMD ng serve --host 0.0.0.0
+COPY dist/game-status /usr/share/nginx/html
