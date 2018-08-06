@@ -1,8 +1,11 @@
 #!/bin/sh
 
+chmod +x ./build-app.sh
+docker run -v "`pwd`/":/app -t --entrypoint "/app/build-app.sh" node:8.11 || exit 1
+
 DOCKER_TAG="`date -u +%Y%m%d-%H%M%S`"
 
-docker build -t mrdunski/game-status:$DOCKER_TAG . || exit 1
+docker build --pull -t mrdunski/game-status:$DOCKER_TAG . || exit 1
 docker push mrdunski/game-status:$DOCKER_TAG || exit 1
 
 echo "
@@ -31,16 +34,16 @@ spec:
       - name: game-status
         image: mrdunski/game-status:$DOCKER_TAG
         ports:
-        - containerPort: 4200
+        - containerPort: 80
         livenessProbe:
           initialDelaySeconds: 60
           httpGet:
             path: /
-            port: 4200
+            port: 80
         readinessProbe:
           httpGet:
             path: /
-            port: 4200
+            port: 80
 ---
 kind: Service
 apiVersion: v1
@@ -51,8 +54,8 @@ spec:
     app: game-status
   ports:
   - protocol: TCP
-    port: 4200
-    targetPort: 4200
+    port: 80
+    targetPort: 80
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -65,5 +68,5 @@ spec:
       paths:
       - backend:
           serviceName: game-status
-          servicePort: 4200
+          servicePort: 80
 " > game-status.yaml
