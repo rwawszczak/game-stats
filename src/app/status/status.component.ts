@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {GameDataService} from '../game-data.service';
 import {Game} from '../game';
 import {interval, Observable} from 'rxjs/index';
@@ -9,7 +9,7 @@ import {map} from 'rxjs/operators';
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css']
 })
-export class StatusComponent implements OnInit {
+export class StatusComponent {
   games: Map<string, Game> = new Map();
   ongoing: Game;
   countdown: string;
@@ -72,8 +72,5 @@ export class StatusComponent implements OnInit {
 
   getETA(game)  {
     return this.ongoing ? new Date(this.ongoing.startDate).getTime() + (this.games.size * 30 * 60000) : new Date();
-  }
-  ngOnInit() {
-
   }
 }

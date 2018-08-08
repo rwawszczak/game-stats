@@ -1,2 +1,2 @@
-  <h1 class="control" (click)="goFullScreen()">  Welcome to {{ title }} (beta)</h1>
+<h1 align="center" *ngIf="!isFullscreen" class="control" (click)="goFullScreen()">  Welcome to {{ title }} (beta)</h1>
 <app-status></app-status>

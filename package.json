@@ -23,6 +23,7 @@
     "core-js": "^2.5.4",
     "reconnecting-websocket": "^4.0.0-rc5",
     "rxjs": "^6.0.0",
+    "screenfull": "^3.3.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
