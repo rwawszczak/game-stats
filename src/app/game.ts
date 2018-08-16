@@ -6,4 +6,5 @@ export class Game {
   creationDate: string;
   startDate: Date;
   endDate: Date;
+  timeoutDate: Date;
 }
