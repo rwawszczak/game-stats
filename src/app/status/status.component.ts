@@ -57,7 +57,7 @@ export class StatusComponent {
   startTimer() {
     this.counter$ = interval(1000).pipe(
       map(() => {
-        return this.ongoing ? Math.floor((new Date(this.ongoing.startDate).getTime() + (30 * 60000) - new Date().getTime()) / 1000) : 0;
+        return this.ongoing ? Math.floor((new Date(this.ongoing.startDate).getTime() + (17 * 60000) - new Date().getTime()) / 1000) : 0;
       })
     );
     this.counter$.subscribe((x) => {
@@ -71,6 +71,6 @@ export class StatusComponent {
   }
 
   getETA(game)  {
-    return this.ongoing ? new Date(this.ongoing.startDate).getTime() + (this.games.size * 30 * 60000) : new Date();
+    return this.ongoing ? new Date(this.ongoing.startDate).getTime() + (this.games.size * 17 * 60000) : new Date();
   }
 }
